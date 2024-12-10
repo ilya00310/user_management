@@ -3,7 +3,7 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const start = async () => {
-  const PORT = process.env.port || 5000;
+  const PORT = process.env.PORT || 5000;
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
     .setTitle('user_management')
