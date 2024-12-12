@@ -7,6 +7,7 @@
 2. Создать и наполнить таблицы:
 
 ```
+make create_db
 make migrate_latest
 ```
 
@@ -20,3 +21,5 @@ make start_service
 
 Диаграмма сущностей:
 https://drive.google.com/file/d/1DyAXSyNb6ZzeN5yZ2xSiRzilOBLw-jA_/view
+
+Адрес документации: /api/docs

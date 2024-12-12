@@ -19,7 +19,7 @@ export class RolesController {
   }
 
   @ApiOperation({ summary: 'Delete role' })
-  @ApiResponse({ status: 200, type: Role })
+  @ApiResponse({ status: 200, type: String })
   @Delete()
   deleteRole(@Query('id') id: string) {
     return this.rolesService.deleteRole(Number(id));
