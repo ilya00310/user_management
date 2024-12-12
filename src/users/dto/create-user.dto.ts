@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, Matches } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class CreateUserDto {
   @ApiProperty({ example: 'Ilya', description: 'Username' })
@@ -12,6 +12,5 @@ export class CreateUserDto {
 
   @ApiProperty({ example: 'myPassword123', description: 'User password' })
   @IsString()
-  @Matches(/^(?=.*\d)(?=.*[A-Z]).{8,}$/)
   readonly password: string;
 }

@@ -4,7 +4,6 @@ import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import * as dotenv from 'dotenv';
 import { ValidationPipe } from '@nestjs/common';
-import { HttpExceptionFilter } from './http-excetion.filter';
 dotenv.config();
 const start = async () => {
   const PORT = process.env.PORT || 5000;
@@ -19,7 +18,6 @@ const start = async () => {
       transform: true,
     }),
   );
-  app.useGlobalFilters(new HttpExceptionFilter());
   app.listen(PORT, () => console.log(`Server started on port = ${PORT}`));
 };
 

@@ -1,4 +1,4 @@
-import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from './entities/user.entity';
@@ -9,9 +9,24 @@ export class UsersService {
   constructor(@InjectModel(User) private userRepository: typeof User) {}
   async createUser(createUserDto: CreateUserDto): Promise<object> {
     const { password } = createUserDto;
+    const error = { success: false, errors: [] };
+    const RegexCapitalLiteral = /^(?=.*[A-Z]).+$/;
+    const RegexNumberLiteral = /^(?=.*\d).+$/;
+    if (!RegexCapitalLiteral.test(password)) {
+      error.errors.push("Password don't have capital literal");
+    }
+    if (!RegexNumberLiteral.test(password)) {
+      error.errors.push("Password don't have number literal");
+    }
+    if (error.errors.length > 0) {
+      throw new BadRequestException({
+        code: 400,
+        error: error,
+      });
+    }
     const user = await this.userRepository.findOne({ where: { password } });
     if (user) {
-      throw new ConflictException('User already');
+      throw new ConflictException('User already exist');
     }
     await this.userRepository.create(createUserDto);
     return { success: true };

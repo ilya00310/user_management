@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Post, Body, Controller, Query, Delete, Get, Put, Patch } from '@nestjs/common';
+import { Post, Body, Controller, Query, Delete, Get, Patch } from '@nestjs/common';
 import { RolesService } from './roles.service';
 import { CreateRoleDto } from './dto/create-role.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';

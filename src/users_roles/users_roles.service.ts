@@ -23,10 +23,7 @@ export class UsersRolesService {
     const rolesToDelete = currentRolesId.filter(roleId => !idRoles.includes(roleId));
     if (rolesToDelete.length > 0) {
       await this.usersRolesRepository.destroy({
-        where: {
-          user_id,
-          role_id: rolesToDelete,
-        },
+        where: { user_id, role_id: rolesToDelete },
       });
     }
   }
@@ -38,10 +35,7 @@ export class UsersRolesService {
     const rolesToAdd = idRoles.filter(roleId => !currentRoleIds.includes(roleId));
 
     if (rolesToAdd.length > 0) {
-      const newUserRoles = rolesToAdd.map(roleId => ({
-        role_id: roleId,
-        user_id,
-      }));
+      const newUserRoles = rolesToAdd.map(roleId => ({ role_id: roleId, user_id }));
 
       await this.usersRolesRepository.bulkCreate(newUserRoles);
     }

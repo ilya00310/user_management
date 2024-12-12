@@ -53,9 +53,9 @@ export class RolesService {
     const newRole = await this.roleRepository.findOne({ where: { id } });
     return newRole;
   }
-  async getIdRolesByName(updateUsersRolesDto: CreateUsersRolesDto): Promise<number[]> {
+  async getIdRolesByName(createUsersRolesDto: CreateUsersRolesDto): Promise<number[]> {
     const idRoles: number[] = [];
-    for (const name of updateUsersRolesDto.roles) {
+    for (const name of createUsersRolesDto.roles) {
       const role = await this.roleRepository.findOne({ where: { role: name } });
       if (!role) {
         throw new NotFoundException("Role don't found");
