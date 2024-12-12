@@ -3,6 +3,6 @@
   "trailingComma": "all",
   "bracketSpacing": true,
   "jsxBracketSameLine": false,
-  "printWidth": 100,
+  "printWidth": 200,
   "arrowParens": "avoid"
 }

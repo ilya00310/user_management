@@ -21,9 +21,6 @@ export class Role extends Model<Role, RoleCreation> {
   id: number;
 
   @ApiProperty({ example: 'Admin', description: 'User role' })
-  @Column({ type: DataType.STRING, allowNull: false })
+  @Column({ type: DataType.STRING, allowNull: false, unique: true })
   role: string;
-  @ApiProperty({ example: null, description: 'Role archived or not' })
-  @Column({ type: DataType.DATE, allowNull: true, defaultValue: null })
-  deleted_at?: Date | null;
 }
